@@ -1,6 +1,7 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [
+    ./sxmo.nix
     "${inputs.self}/mixins/bash.nix"
     "${inputs.self}/mixins/locale.nix"
     "${inputs.self}/mixins/workprogs.nix"

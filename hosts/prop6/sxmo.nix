@@ -20,15 +20,7 @@ in
   services.xserver = {
     enable = true;
     desktopManager.sxmo.enable = true;
-    desktopManager.sxmo.package = pkgs.nur.repos.colinsane.sxmo-utils.overrideAttrs {
-      prePatch = ''
-        substituteInPlace scripts/core/sxmo_keyboard.sh \
-          --replace 'pidof' 'pidof -x'
-        substituteInPlace configs/udev/90-sxmo.rules \
-          --replace /bin/chgrp ${pkgs.coreutils}/bin/chgrp \
-          --replace /bin/chmod ${pkgs.coreutils}/bin/chmod
-      '';
-    };
+    desktopManager.sxmo.package = pkgs.nur.repos.colinsane.sxmo-utils;
 
     displayManager = {
       tinydm.enable = true;
