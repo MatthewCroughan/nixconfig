@@ -36,5 +36,16 @@ in
       autoLogin.user = "pasha";
       defaultSession = "swmo";
     };
+
+    users.users.pasha = {
+      extraGroups = [
+        "dialout"
+        "feedbackd"
+        "networkmanager"
+        "video"
+        "wheel"
+      ];
+    };
+
   };
 }
