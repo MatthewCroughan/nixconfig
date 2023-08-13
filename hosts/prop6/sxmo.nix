@@ -33,7 +33,7 @@ in
     displayManager = {
       tinydm.enable = true;
       autoLogin.enable = true;
-      autoLogin.user = "matthew";
+      autoLogin.user = "pasha";
       defaultSession = "swmo";
     };
   };
