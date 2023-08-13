@@ -2,6 +2,7 @@
 {
   imports = [
     ./disko.nix
+    "${inputs.self}/mixins/wireless.nix"
     "${inputs.self}/mixins/bash.nix"
     "${inputs.self}/mixins/locale.nix"
     "${inputs.self}/mixins/workprogs.nix"
