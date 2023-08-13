@@ -4,7 +4,7 @@
   # NOT: $ mkpasswd -m sha-512
   # $ wpa_passphrase SSID password
   environment.systemPackages = [ pkgs.wpa_supplicant_gui ];
-  networking.wireless.allowAuxiliaryImperativeNetworks = true;
+  #networking.wireless.allowAuxiliaryImperativeNetworks = true;
   networking.wireless.userControlled.enable = true;
   networking.wireless.enable = true;
   networking.wireless.networks = { 
