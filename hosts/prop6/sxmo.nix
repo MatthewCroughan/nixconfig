@@ -16,6 +16,7 @@ in
   ];
 
   networking.networkmanager.enable = true;
+  hardware.opengl.enable = true;
 
   services.xserver = {
     enable = true;
@@ -28,8 +29,6 @@ in
       autoLogin.user = "pasha";
       defaultSession = "swmo";
     };
-
-    hardware.opengl.enable = true;
 
     users.users.pasha = {
       extraGroups = [
