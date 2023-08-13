@@ -1,6 +1,7 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [
+    "${inputs.self}/mixins/wireless.nix"
     "${inputs.self}/mixins/bash.nix"
     "${inputs.self}/mixins/locale.nix"
     "${inputs.self}/mixins/workprogs.nix"
@@ -23,6 +24,11 @@
 
   hardware.bluetooth.enable = true;
 
+  # Disable accidentally sleeping/hibernating the phone via the power button
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
 
   # https://github.com/tailscale/tailscale/issues/3310
   # https://github.com/tailscale/tailscale/issues/4432
