@@ -5,7 +5,7 @@
       libreoffice
       gimp
       inkscape
-      kicad
+      kicad-small
 
       element-desktop
 
@@ -43,8 +43,6 @@
       hyperfine
 
       picocom
-
-      atom
     ];
   };
 }
