@@ -37,6 +37,8 @@ in
       defaultSession = "swmo";
     };
 
+    hardware.opengl.enable = true;
+
     users.users.pasha = {
       extraGroups = [
         "dialout"
