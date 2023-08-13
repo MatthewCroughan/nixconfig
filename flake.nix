@@ -11,9 +11,16 @@
       url = "github:colemickens/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mobile-nixos = {
+      url = "github:matthewcroughan/mobile-nixos/mc/latest-64";
+      flake = false;
+    };
+    nur.url = "github:nix-community/nur";
+    disko.url = "github:nix-community/disko";
+    disko-utils.url = "github:matthewcroughan/disko-utils";
   };
 
-  outputs = { self, nixpkgs, home-manager, robotnix, firefox, nixinate, nixos-hardware, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, robotnix, firefox, nixinate, nixos-hardware, mobile-nixos, nur, disko, disko-utils, ... }@inputs: {
 
     apps = nixinate.nixinate.x86_64-linux self;
 
@@ -24,7 +31,33 @@
       #anotherPhone = import ./hosts/anotherPhone/default.nix;
     };
 
+    packages.x86_64-linux = {
+      pkhsts-autoinstaller-image = disko-utils.mkAutoInstaller self.nixosConfigurations.pkhsts;
+    };
+
     nixosConfigurations = {
+      prop6 = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          (import "${mobile-nixos}/lib/configuration.nix" { device = "oneplus-enchilada"; })
+          ./hosts/prop6/configuration.nix
+          home-manager.nixosModules.home-manager
+        ];
+        specialArgs = { inherit inputs; };
+      };
+      pkhsts = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/pkhsts/configuration.nix
+          disko.nixosModules.default
+          home-manager.nixosModules.home-manager
+          nixos-hardware.nixosModules.microsoft-surface-go
+        ];
+        specialArgs = {
+          inherit inputs;
+          device = "/dev/disk/by-id/nvme-eui.00080d01002dee2e";
+        };
+      };
       prodeskalpha = nixpkgs.lib.nixosSystem {    # this is the hostname = some func
         system = "x86_64-linux";
         modules = [
