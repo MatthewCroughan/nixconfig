@@ -37,13 +37,6 @@
               sshUser = "pasha";
               buildOn = "remote";
             };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.pasha = {
-              home.username = "pasha";
-              home.stateVersion = "22.11";
-              home.homeDirectory = "/home/pasha";
-            };
           }
         ];
         specialArgs = { inherit inputs; };
@@ -59,13 +52,6 @@
               sshUser = "pasha";
               buildOn = "remote";
             };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.pasha = {
-              home.username = "pasha";
-              home.stateVersion = "22.11";
-              home.homeDirectory = "/home/pasha";
-            };
           }
         ];
         specialArgs = { inherit inputs; };
@@ -75,15 +61,6 @@
         modules = [
           (import ./hosts/ptpx220/configuration.nix)
           home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.pasha = {
-              home.username = "pasha";
-              home.stateVersion = "22.11";
-              home.homeDirectory = "/home/pasha";
-            };
-          }
         ];
         specialArgs = { inherit inputs; };
       };
