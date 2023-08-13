@@ -17,6 +17,7 @@
     extraGroups = [
       "wheel"
       "dialout"
+      "video"
       "docker"
     ];
     openssh.authorizedKeys.keys = [

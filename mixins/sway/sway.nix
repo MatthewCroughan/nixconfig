@@ -17,6 +17,9 @@
   # other quirks.
   programs.sway.enable = true;
 
+  # For controlling backlights
+  programs.light.enable = true;
+
   fonts.fonts = with pkgs; [ terminus_font_ttf font-awesome ];
   home-manager.users.pasha = { pkgs, ... }: {
 
