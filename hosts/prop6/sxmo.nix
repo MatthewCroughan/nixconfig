@@ -16,7 +16,16 @@ in
   ];
 
   networking.networkmanager.enable = true;
-  hardware.opengl.enable = true;
+
+  users.users.pasha = {
+    extraGroups = [
+      "dialout"
+      "feedbackd"
+      "networkmanager"
+      "video"
+      "wheel"
+    ];
+  };
 
   services.xserver = {
     enable = true;
@@ -29,16 +38,5 @@ in
       autoLogin.user = "pasha";
       defaultSession = "swmo";
     };
-
-    users.users.pasha = {
-      extraGroups = [
-        "dialout"
-        "feedbackd"
-        "networkmanager"
-        "video"
-        "wheel"
-      ];
-    };
-
   };
 }
