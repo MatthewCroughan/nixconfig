@@ -15,7 +15,7 @@
       url = "github:matthewcroughan/mobile-nixos/mc/latest-64";
       flake = false;
     };
-    nur.url = "github:nix-community/nur";
+    nur.url = "github:nix-community/nur/e2c6f6f75cd712159314f08d1b4e3490a7073826";
     disko.url = "github:nix-community/disko";
     disko-utils.url = "github:matthewcroughan/disko-utils";
   };
