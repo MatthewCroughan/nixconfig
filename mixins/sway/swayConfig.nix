@@ -1,5 +1,6 @@
 { pkgs, lib, config, inputs, ... }:
 let
+  light = "${pkgs.light}/bin/light";
   switchToRussian = pkgs.writeScript "switchToRussian.sh" ''
     currentLayout=$(swaymsg -t get_inputs -r | ${pkgs.jq}/bin/jq -r "[.[] | select(.xkb_active_layout_name != null)][0].xkb_active_layout_name")
     if [ "$currentLayout" = "Russian" ]; then
@@ -54,6 +55,8 @@ in
           { always = true; command = "${pkgs.mako}/bin/mako --default-timeout 3000"; }
         ];
         keybindings = lib.mkOptionDefault {
+          "XF86MonBrightnessUp" = "exec ${light} -A 5";
+          "XF86MonBrightnessDown" = "exec ${light} -U 5";
           "${modifier}+F10" = "exec ${inputs.firefox.packages.${pkgs.hostPlatform.system}.firefox-nightly-bin}/bin/firefox";
           "${modifier}+F11" = "exec ${switchToRussian}";
           "${modifier}+F12" = "exec ${switchUSVariant}";
