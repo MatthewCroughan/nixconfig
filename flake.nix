@@ -6,7 +6,7 @@
     nixpkgs.url = "github:/nixos/nixpkgs/nixos-unstable";
     nixinate.url = "github:matthewcroughan/nixinate";
     home-manager.url = "github:nix-community/home-manager";
-    robotnix.url = "github:danielfullmer/robotnix";
+    robotnix.url = "github:nix-community/robotnix/ba061f8235f9cac82337c349e542bdfcc2b3d2c2";
     firefox = {
       url = "github:colemickens/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
